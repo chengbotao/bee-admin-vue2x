@@ -2,47 +2,62 @@
  * @Author: Chengbotao
  * @Description: 
  * @Date: 2020-12-04 22:57:06
- * @LastEditTime: 2020-12-05 00:12:09
+ * @LastEditTime: 2020-12-06 22:23:35
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\views\Login.vue
 -->
 
 <template>
   <section class="bee-login_container">
-    <el-form>
-      <el-form-item>
+    <el-form
+      class="login_form"
+      ref="login_form"
+      :model="formModel"
+      :rules="formRules"
+    >
+      <el-form-item prop="userName">
         <el-input
-          v-model="user"
+          v-model="formModel.userName"
           placeholder="请输入用户名"
           prefix-icon="el-icon-user"
         ></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="passWord">
         <el-input
-          v-model="pwd"
+          v-model="formModel.passWord"
           placeholder="请输入密码"
           prefix-icon="el-icon-lock"
           show-password
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="signIn">登录</el-button>
+        <el-button class="btn_sign" type="primary" @click="signIn"
+          >登录</el-button
+        >
       </el-form-item>
     </el-form>
   </section>
 </template>
 
 <script>
+import { routes } from "@/router/routes.config";
 export default {
   name: "Login",
   data() {
     return {
-      user: "",
-      pwd: ""
+      formModel: {
+        userName: "",
+        passWord: ""
+      },
+      formRules: {
+        userName: [],
+        passWord: []
+      }
     };
   },
   methods: {
     signIn() {
+      this.$router.addRoutes(routes);
       this.$router.push("/home");
     }
   }
@@ -56,5 +71,15 @@ export default {
   bottom: 0;
   right: 0;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login_form {
+    width: 5.2rem;
+    height: 4.8rem;
+    .btn_sign {
+      width: 100%;
+    }
+  }
 }
 </style>
