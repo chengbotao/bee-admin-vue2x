@@ -2,13 +2,13 @@
  * @Author: Chengbotao
  * @Description:
  * @Date: 2020-12-05 03:05:18
- * @LastEditTime: 2020-12-06 22:30:15
+ * @LastEditTime: 2020-12-06 23:30:03
  * @LastEditors: Chengbotao
- * @FilePath: \bee-admin-vue2x\src\api\server.js
+ * @FilePath: \bee-admin-vue2x\src\request\server.js
  */
 
 import axios from "axios";
-import config from "./server.config";
+import config from "./config";
 
 const server = axios.create(config);
 
