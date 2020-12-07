@@ -2,7 +2,7 @@
  * @Author: Chengbotao
  * @Description: 
  * @Date: 2020-12-04 22:57:06
- * @LastEditTime: 2020-12-06 22:23:35
+ * @LastEditTime: 2020-12-07 12:47:12
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\views\Login.vue
 -->
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { routes } from "@/router/routes.config";
+import { routes } from "@/router/config";
 export default {
   name: "Login",
   data() {
