@@ -2,7 +2,7 @@
  * @Author: Chengbotao
  * @Description: 
  * @Date: 2020-12-04 21:45:32
- * @LastEditTime: 2020-12-05 03:47:43
+ * @LastEditTime: 2020-12-10 17:30:51
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\App.vue
 -->
@@ -15,10 +15,16 @@
 import { setHtmlFontSize } from "@/common";
 export default {
   name: "App",
+  methods: {
+    resizeHtmlFontSize() {
+      return setHtmlFontSize();
+    }
+  },
   mounted() {
-    window.addEventListener("resize", setHtmlFontSize());
+    setHtmlFontSize();
+    window.addEventListener("resize", this.resizeHtmlFontSize);
     this.$once("hook:beforeDestroy", () => {
-      window.removeEventListener("resize", setHtmlFontSize);
+      window.removeEventListener("resize", this.resizeHtmlFontSize);
     });
   }
 };
