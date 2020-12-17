@@ -2,7 +2,7 @@
  * @Author: Chengbotao
  * @Description: 
  * @Date: 2020-12-04 22:57:06
- * @LastEditTime: 2020-12-07 12:47:12
+ * @LastEditTime: 2020-12-17 18:15:35
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\views\Login.vue
 -->
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { resetRouter } from "@/router";
 import { routes } from "@/router/config";
 export default {
   name: "Login",
@@ -60,6 +61,10 @@ export default {
       this.$router.addRoutes(routes);
       this.$router.push("/home");
     }
+  },
+  mounted() {
+    // 退回登录页重置路由
+    resetRouter();
   }
 };
 </script>
