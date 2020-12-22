@@ -2,7 +2,7 @@
  * @Author: Chengbotao
  * @Description:
  * @Date: 2020-12-04 21:45:32
- * @LastEditTime: 2020-12-17 18:13:45
+ * @LastEditTime: 2020-12-22 07:52:09
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\router\index.js
  */
@@ -15,6 +15,10 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    redirect: "/login"
+  },
+  {
+    path: "/login",
     name: "Login",
     component: Login
   }
@@ -27,9 +31,11 @@ const createRouter = () =>
     routes
   });
 
-export const router = createRouter();
+const router = createRouter();
 
 export function resetRouter() {
   const tempRouter = createRouter();
   router.matcher = tempRouter.matcher;
 }
+
+export default router;

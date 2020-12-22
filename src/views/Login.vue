@@ -2,7 +2,7 @@
  * @Author: Chengbotao
  * @Description: 
  * @Date: 2020-12-04 22:57:06
- * @LastEditTime: 2020-12-17 18:15:35
+ * @LastEditTime: 2020-12-22 15:08:36
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\views\Login.vue
 -->
@@ -41,7 +41,7 @@
 
 <script>
 import { resetRouter } from "@/router";
-import { routes } from "@/router/config";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -56,15 +56,23 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapGetters(["getRoutes"])
+  },
   methods: {
+    ...mapActions(["setUseRole"]),
     signIn() {
-      this.$router.addRoutes(routes);
+      this.setUseRole("admin");
+      this.$router.addRoutes(this.getRoutes);
       this.$router.push("/home");
+    },
+    resetRoutes() {
+      resetRouter();
     }
   },
   mounted() {
     // 退回登录页重置路由
-    resetRouter();
+    this.resetRoutes();
   }
 };
 </script>
