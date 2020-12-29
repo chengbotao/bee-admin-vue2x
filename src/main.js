@@ -2,7 +2,7 @@
  * @Author: Chengbotao
  * @Description:
  * @Date: 2020-12-04 21:45:32
- * @LastEditTime: 2020-12-22 15:05:46
+ * @LastEditTime: 2020-12-29 10:18:49
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\main.js
  */
@@ -14,6 +14,9 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import "./styles/index.scss";
 import globalComponents from "./components";
+import Api from "../src/api";
+
+Vue.prototype.$api = Api;
 
 Vue.use(ElementUI);
 
@@ -22,24 +25,6 @@ globalComponents.forEach(component => {
 });
 
 Vue.config.productionTip = false;
-
-router.beforeEach((to, from, next) => {
-  if (to.matched.length === 0) {
-    // 刷新操作
-    if (to.path !== "/login" && to.path !== "/") {
-      if (store.getters.getRoutes.length > 0) {
-        router.addRoutes(store.getters.getRoutes);
-        next({ ...to, replace: true });
-      } else {
-        next();
-      }
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
 
 new Vue({
   router,

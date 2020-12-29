@@ -2,13 +2,15 @@
  * @Author: Chengbotao
  * @Description: 
  * @Date: 2020-12-04 22:57:06
- * @LastEditTime: 2020-12-22 15:08:36
+ * @LastEditTime: 2020-12-29 10:39:44
  * @LastEditors: Chengbotao
  * @FilePath: \bee-admin-vue2x\src\views\Login.vue
 -->
 
 <template>
   <section class="bee-login_container">
+    <el-button class="server-btn" @click="server">api 测试</el-button>
+
     <el-form
       class="login_form"
       ref="login_form"
@@ -66,6 +68,18 @@ export default {
       this.$router.addRoutes(this.getRoutes);
       this.$router.push("/home");
     },
+    server() {
+      this.$api
+        .baidu({
+          params: {
+            wd: "chengbotao"
+          }
+        })
+        .then(res => {
+          console.log(res);
+        });
+      return;
+    },
     resetRoutes() {
       resetRouter();
     }
@@ -93,6 +107,10 @@ export default {
     .btn_sign {
       width: 100%;
     }
+  }
+  .server-btn {
+    position: fixed;
+    top: 0.5rem;
   }
 }
 </style>
